@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_path")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "calculator.go",
+        "main.go",
+        "utils.go",
+    ],
+    importpath = "github.com/purkhusid/bazel_vcs_differ",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//protos:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "change_detector",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
+
+# gazelle:prefix github.com/purkhusid/bazel_vcs_differ
+# gazelle:build_file_name BUILD.bazel
+gazelle(name = "gazelle")
+
+#This target is used for Go IDE tooling
+go_path(
+    name = "gopath",
+    mode = "link",
+    deps = [
+        "//:change_detector",
+    ],
+)
