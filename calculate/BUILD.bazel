@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "calculator.go",
+        "output.go",
+        "query.go",
+    ],
+    importpath = "github.com/purkhusid/bazel_vcs_differ/calculate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//protos:go_default_library",
+        "//query:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
+    ],
+)

@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["utils.go"],
+    importpath = "github.com/purkhusid/bazel_vcs_differ/query",
+    visibility = ["//visibility:public"],
+    deps = ["//protos:go_default_library"],
+)

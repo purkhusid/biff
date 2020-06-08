@@ -1,10 +1,10 @@
-package main
+package query
 
 import (
 	blaze_query "github.com/purkhusid/bazel_vcs_differ/protos"
 )
 
-func getRuleTargets(queryResult *blaze_query.QueryResult) []*blaze_query.Rule {
+func GetRuleTargets(queryResult *blaze_query.QueryResult) []*blaze_query.Rule {
 	rules := make([]*blaze_query.Rule, 0)
 
 	for _, target := range queryResult.GetTarget() {
@@ -16,7 +16,7 @@ func getRuleTargets(queryResult *blaze_query.QueryResult) []*blaze_query.Rule {
 	return rules
 }
 
-func getRuleAttributes(rule *blaze_query.Rule) []*blaze_query.Attribute {
+func GetRuleAttributes(rule *blaze_query.Rule) []*blaze_query.Attribute {
 	attributes := make([]*blaze_query.Attribute, 0)
 	for _, attribute := range rule.GetAttribute() {
 		name := attribute.GetName()
@@ -28,7 +28,7 @@ func getRuleAttributes(rule *blaze_query.Rule) []*blaze_query.Attribute {
 	return attributes
 }
 
-func getTargetLabel(target *blaze_query.Target) string {
+func GetTargetLabel(target *blaze_query.Target) string {
 	if target.GetRule() != nil {
 		return target.GetRule().GetName()
 	}

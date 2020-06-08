@@ -1,4 +1,4 @@
-package main
+package calculate
 
 import (
 	"crypto/sha256"
@@ -12,7 +12,13 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	blaze_query "github.com/purkhusid/bazel_vcs_differ/protos"
+	"github.com/purkhusid/bazel_vcs_differ/query"
 )
+
+type HashedRuleTarget struct {
+	Rule *blaze_query.Rule
+	Hash string
+}
 
 // Calculator ...
 type Calculator struct {
@@ -26,7 +32,7 @@ func NewCalculator(queryResult *blaze_query.QueryResult) Calculator {
 	labelTargets := make(map[string]*blaze_query.Target)
 
 	for _, target := range queryResult.GetTarget() {
-		targetLabel := getTargetLabel(target)
+		targetLabel := query.GetTargetLabel(target)
 		labelTargets[targetLabel] = target
 	}
 
@@ -97,7 +103,7 @@ func (c *Calculator) calculateRuleHash(rule *blaze_query.Rule) string {
 	hash := sha256.New()
 
 	// Add the attributes to the hash
-	attributes := getRuleAttributes(rule)
+	attributes := query.GetRuleAttributes(rule)
 	for _, attribute := range attributes {
 		attributeName := attribute.GetName()
 
@@ -126,7 +132,7 @@ func (c *Calculator) calculateRuleHash(rule *blaze_query.Rule) string {
 // CalculateHashes ...
 func (c *Calculator) CalculateHashes() []HashedRuleTarget {
 	hashedRuleTargets := make([]HashedRuleTarget, 0)
-	ruleTargets := getRuleTargets(c.QueryResult)
+	ruleTargets := query.GetRuleTargets(c.QueryResult)
 	for _, ruleTarget := range ruleTargets {
 		ruleHash := c.calculateRuleHash(ruleTarget)
 		hashedRuleTarget := HashedRuleTarget{

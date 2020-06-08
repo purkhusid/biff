@@ -1,3 +1,4 @@
 /bazel-*
 .mypy_cache
 .vscode
+user.bazelrc
