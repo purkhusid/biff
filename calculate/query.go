@@ -11,9 +11,9 @@ import (
 	blaze_query "github.com/purkhusid/bazel_vcs_differ/protos"
 )
 
-func GetQueryResult(workspacePath, bazel string) *blaze_query.QueryResult {
+func GetQueryResult(workspacePath, bazel, query string) *blaze_query.QueryResult {
 	ctx, _ := context.WithCancel(context.Background())
-	args := append([]string(nil), "query", "--output=proto", "--order_output=full", "//external:all-targets + deps(//...:all-targets)")
+	args := append([]string(nil), "query", "--output=proto", "--order_output=full", query)
 	stdoutBuffer := new(bytes.Buffer)
 	stdErrBuffer := new(bytes.Buffer)
 	command := exec.CommandContext(ctx, bazel, args...)

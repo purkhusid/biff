@@ -4,12 +4,14 @@ go_library(
     name = "go_default_library",
     srcs = [
         "calculate.go",
+        "compare.go",
         "root.go",
     ],
     importpath = "github.com/purkhusid/bazel_vcs_differ/cmd",
     visibility = ["//visibility:public"],
     deps = [
         "//calculate:go_default_library",
+        "//compare:go_default_library",
         "@com_github_spf13_cobra//:go_default_library",
     ],
 )

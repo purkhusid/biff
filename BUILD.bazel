@@ -10,7 +10,7 @@ go_library(
 )
 
 go_binary(
-    name = "change_detector",
+    name = "biff",
     embed = [":go_default_library"],
     visibility = ["//visibility:public"],
 )
@@ -24,6 +24,6 @@ go_path(
     name = "gopath",
     mode = "link",
     deps = [
-        "//:change_detector",
+        "//:biff",
     ],
 )
