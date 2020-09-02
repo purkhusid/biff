@@ -7,7 +7,7 @@ go_library(
         "output.go",
         "query.go",
     ],
-    importpath = "github.com/purkhusid/bazel_vcs_differ/calculate",
+    importpath = "github.com/purkhusid/biff/calculate",
     visibility = ["//visibility:public"],
     deps = [
         "//protos:go_default_library",

@@ -7,7 +7,7 @@ go_library(
         "compare.go",
         "root.go",
     ],
-    importpath = "github.com/purkhusid/bazel_vcs_differ/cmd",
+    importpath = "github.com/purkhusid/biff/cmd",
     visibility = ["//visibility:public"],
     deps = [
         "//calculate:go_default_library",

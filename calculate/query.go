@@ -8,7 +8,7 @@ import (
 	"os/exec"
 
 	"github.com/golang/protobuf/proto"
-	blaze_query "github.com/purkhusid/bazel_vcs_differ/protos"
+	blaze_query "github.com/purkhusid/biff/protos"
 )
 
 func GetQueryResult(workspacePath, bazel, query string) *blaze_query.QueryResult {

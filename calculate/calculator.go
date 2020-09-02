@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/proto"
-	blaze_query "github.com/purkhusid/bazel_vcs_differ/protos"
-	"github.com/purkhusid/bazel_vcs_differ/query"
+	blaze_query "github.com/purkhusid/biff/protos"
+	"github.com/purkhusid/biff/query"
 )
 
 type HashedRuleTarget struct {

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "go_default_library",
     srcs = ["compare.go"],
-    importpath = "github.com/purkhusid/bazel_vcs_differ/compare",
+    importpath = "github.com/purkhusid/biff/compare",
     visibility = ["//visibility:public"],
     deps = ["//calculate:go_default_library"],
 )

@@ -5,10 +5,14 @@ import (
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/purkhusid/biff/query"
 )
 
 type LabelOutput struct {
-	Hash string `json:hash`
+	Hash string   `json:"hash"`
+	Kind string   `json:"kind"`
+	Tags []string `json:"tags"`
 }
 
 func WriteResultsToFile(hashedRuleTargets []HashedRuleTarget, path string) {
@@ -23,6 +27,8 @@ func WriteResultsToFile(hashedRuleTargets []HashedRuleTarget, path string) {
 	for _, ruleTarget := range hashedRuleTargets {
 		output[ruleTarget.Rule.GetName()] = LabelOutput{
 			Hash: ruleTarget.Hash,
+			Kind: ruleTarget.Rule.GetRuleClass(),
+			Tags: query.GetTags(ruleTarget.Rule),
 		}
 	}
 

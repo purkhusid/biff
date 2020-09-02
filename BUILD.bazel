@@ -4,7 +4,7 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 go_library(
     name = "go_default_library",
     srcs = ["main.go"],
-    importpath = "github.com/purkhusid/bazel_vcs_differ",
+    importpath = "github.com/purkhusid/biff",
     visibility = ["//visibility:public"],
     deps = ["//cmd:go_default_library"],
 )
@@ -15,7 +15,7 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-# gazelle:prefix github.com/purkhusid/bazel_vcs_differ
+# gazelle:prefix github.com/purkhusid/biff
 # gazelle:build_file_name BUILD.bazel
 gazelle(name = "gazelle")
 

@@ -3,7 +3,7 @@ package cmd
 import (
 	"path"
 
-	"github.com/purkhusid/bazel_vcs_differ/calculate"
+	"github.com/purkhusid/biff/calculate"
 	"github.com/spf13/cobra"
 )
 

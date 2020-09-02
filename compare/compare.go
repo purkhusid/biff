@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/purkhusid/bazel_vcs_differ/calculate"
+	"github.com/purkhusid/biff/calculate"
 )
 
 func readFileToJSON(path string) map[string]calculate.LabelOutput {

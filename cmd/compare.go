@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/purkhusid/bazel_vcs_differ/compare"
+	"github.com/purkhusid/biff/compare"
 	"github.com/spf13/cobra"
 )
 
