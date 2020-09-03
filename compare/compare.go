@@ -65,12 +65,11 @@ func CompareAndWriteToOutput(leftPath string, rightPath string, outputPath strin
 		return
 	}
 
-	for k := range changedLabels {
-		fmt.Fprintln(f, k)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+	bytes, err := json.MarshalIndent(changedLabels, "", "    ")
+
+	_, err = f.Write(bytes)
+	if err != nil {
+		log.Panic(err)
 	}
 
 	err = f.Close()

@@ -24,7 +24,7 @@ func init() {
 var compareCommand = &cobra.Command{
 	Use:   "compare",
 	Short: "Compares two outputs from the calculate command",
-	Long:  `Compares two outputs from the calculate command and outputs a file that can be fed to the '--target_pattern_file' option in bazel`,
+	Long:  `Compares two outputs from the calculate command and outputs on the same format as the inputs with only the changed targets`,
 	Run: func(cmd *cobra.Command, args []string) {
 		compare.CompareAndWriteToOutput(leftFlag, rightFlag, comparePutputPathFlag)
 	},
