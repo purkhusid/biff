@@ -41,8 +41,7 @@ Flags:
 
 #### Compare
 
-Compares two outputs from the calculate command and outputs a file that can be
-fed to the '--target_pattern_file' option in bazel
+Compares two outputs from the calculate command and outputs a file with only the changed targets
 
 Usage:
 ```
